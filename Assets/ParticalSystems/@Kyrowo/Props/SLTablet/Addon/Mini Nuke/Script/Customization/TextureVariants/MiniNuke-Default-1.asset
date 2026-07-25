@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f052269f78682304ea01b9cf003698d2, type: 3}
+  m_Name: MiniNuke-Default-1
+  m_EditorClassIdentifier: 
+  container:
+    groupName: Nuke Mesh
+    order: 0
+    author: Kyrowo
+    prefabVariation: Default
+    description: Default Texture
+    requiresDepthLight: 0
+    textureVariants:
+      textureName: Default Texture
+      Texture: {fileID: 2800000, guid: bdf8b39a1c33e9a46aaabc13483d8ad4, type: 3}
+      objectsToChange:
+      - meshName: PS_MiniNukeBomb
+        newMaterial: {fileID: 2100000, guid: 50ff1db2adcbaec438f1207c0b103893, type: 2}
+        materialIndex: 0

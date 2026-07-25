@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d14ac6a11d3fef49ad6927ea32468c0, type: 3}
+  m_Name: 00-MiniNuke-Default
+  m_EditorClassIdentifier: 
+  assetName: Mini Nuke
+  version: 2.0.0
+  prefabVariation: Default
+  description: Standalone Mini Nuke Asset\nIf you want to use it with the Sky Link
+    Tablet head over to the Sky Link Tablet instead.
+  assetHowTo:
+  - type: 0
+    howToUseSubDescriptions:
+    - otherTitle: Default Mini Nuke Asset.\nIf you want to add it to your Sky Link
+        Tablet, choose the Sky Link Asset instead.
+      gesture: 0
+      howToUseDescriptions: []
+  assetTips: []
+  customToggles:
+  - toggle: 1
+    defaultValue: 0
+  skipWhenSymmetry: 0
+  motionsToSymmetrize: []
+  symmetryStartToEndStatus: []
+  hasBothWDSettings: 1
+  hasGestureController: 0
+  folderPath: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke
+  fxControllerPath: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Controller/Standalone/FX-Standalone-MiniNuke-WD-OFF.controller
+  fxControllerPathWD: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Controller/Standalone/FX-Standalone-MiniNuke-WD-ON.controller
+  gestureControllerPathRight: 
+  gestureControllerPathRightWD: 
+  gestureControllerPathLeft: 
+  gestureControllerPathLeftWD: 
+  expMenuName: KTEK-Mini Nuke
+  expMenuPath: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Menu&Para/ExpMenu-MiniNuke-Standalone.asset
+  expParaPath: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Menu&Para/ExpPara-MiniNuke-Standalone.asset
+  hueShiftMenuPath: 
+  hueShiftExpPath: 
+  hueFxPath: 
+  hueFxPathWD: 
+  gameObjectsToDelete:
+  - KTEK-MiniNuke
+  - MiniNuke
+  SSGameObjects:
+  - SS_Shockwave
+  prefabPathRight: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Prefab/Preset/MiniNuke-Standalone.prefab
+  prefabPathLeft: Assets/@Kyrowo/Props/SLTablet/Addon/Mini Nuke/Prefab/Preset/MiniNuke-Standalone.prefab
+  assetOnAvatar: KTEK-Mini Nuke
+  dependencies: 0100000005000000
+  advancedWizardData:
+    Name: 
+    Tooltip: 
+    AdvancedwizardMain: []
+    AdvancedWizardPart: []
+    AdvancedWizardConstraints: []
+    objectsToDestroyByNInstall:
+    - MiniNuke-Standalone
+    - 'Put on your Avatar (Not inside Armature!):'
+    objectsToDestroyByNUninstall:
+    - MiniNuke-Standalone
+    - 'Put on your Avatar (Not inside Armature!):'
+    - KTEK-Mini Nuke
+    boneConstraints: []
+    gameObjectsTransformReset: []
+    forceIsActiveConstraint: []
