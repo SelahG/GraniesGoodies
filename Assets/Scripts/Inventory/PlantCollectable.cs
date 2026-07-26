@@ -4,16 +4,16 @@ using UnityEngine;
 public class PlantCollectable : MonoBehaviour
 {
     private PlantID plantID;
-    private bool hasBeenCollected;
+    private bool collected;
 
     private void Awake()
     {
         plantID = GetComponent<PlantID>();
     }
 
-    public void Collect()
+    private void OnTriggerEnter(Collider other)
     {
-        if (hasBeenCollected)
+        if (collected || !other.CompareTag("Player"))
         {
             return;
         }
@@ -24,14 +24,15 @@ public class PlantCollectable : MonoBehaviour
             return;
         }
 
-        bool accepted = InventoryManager.Instance.CollectPlant(plantID);
+        bool accepted =
+            InventoryManager.Instance.CollectPlant(plantID);
 
         if (!accepted)
         {
             return;
         }
 
-        hasBeenCollected = true;
+        collected = true;
         Destroy(gameObject);
     }
 }
