@@ -75,3 +75,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/XR/Settings/OpenXRPackageSettings.asset
 Assets/Scripts/UI.meta
+Assets/XR/Settings/OpenXR Package Settings.asset
+Assets/Scenes/LevelDesign.unity
