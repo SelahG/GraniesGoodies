@@ -50,6 +50,5 @@ public class InventoryManager : MonoBehaviour
         }
 
         Debug.Log("Everything collected!");
-        // TODO Trigger Granny cutscene.
     }
 }
