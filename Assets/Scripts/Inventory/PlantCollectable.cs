@@ -1,78 +1,37 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
-[RequireComponent(typeof(XRGrabInteractable))]
+[RequireComponent(typeof(PlantID))]
 public class PlantCollectable : MonoBehaviour
 {
-
-    [Header("Input")]
-    public InputActionReference depositButton;
-
-    private XRGrabInteractable grabInteractable;
     private PlantID plantID;
+    private bool hasBeenCollected;
 
-    private bool isHeld = false;
-
-    void Awake()
+    private void Awake()
     {
-        grabInteractable = GetComponent<XRGrabInteractable>();
         plantID = GetComponent<PlantID>();
-
-        grabInteractable.selectEntered.AddListener(OnGrab);
-        grabInteractable.selectExited.AddListener(OnRelease);
     }
 
-    void OnEnable()
+    public void Collect()
     {
-        if (depositButton != null)
-            depositButton.action.Enable();
-    }
-
-    // void OnDisable()
-    // {
-    //     if (depositButton != null)
-    //         depositButton.action.Disable();
-    // }
-
-    void Update()
-    {
-        if (!isHeld)
-            return;
-
-        if (depositButton != null &&
-            depositButton.action.WasPressedThisFrame())
+        if (hasBeenCollected)
         {
-            DepositPlant();
+            return;
         }
-    }
 
-    void OnGrab(SelectEnterEventArgs args)
-    {
-        isHeld = true;
-    }
+        if (InventoryManager.Instance == null)
+        {
+            Debug.LogError("No InventoryManager exists in the scene.");
+            return;
+        }
 
-    void OnRelease(SelectExitEventArgs args)
-    {
-        isHeld = false;
-    }
-
-    void DepositPlant()
-    {
         bool accepted = InventoryManager.Instance.CollectPlant(plantID);
 
         if (!accepted)
+        {
             return;
+        }
 
-        // if (collectParticles != null)
-        // {
-        //     Instantiate(
-        //         collectParticles,
-        //         particleSpawn.position,
-        //         Quaternion.identity);
-        // }
-
+        hasBeenCollected = true;
         Destroy(gameObject);
     }
 }

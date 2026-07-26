@@ -12,14 +12,23 @@ public enum PlantType
     Fern
 }
 
+[DisallowMultipleComponent]
 public class PlantID : MonoBehaviour
 {
-    [Header("Plant Info")]
+    [Header("Plant Information")]
+
+    [Tooltip("The type of plant being collected.")]
     public PlantType plantType;
 
-    [Tooltip("How many Granny needs.")]
+    [Min(1)]
+    [Tooltip("How many plants of this type Granny needs.")]
     public int amountNeeded = 5;
 
-    [Tooltip("Prefab to place in the wagon.")]
+    [Tooltip("Prefab placed in the wagon when this plant is collected.")]
     public GameObject wagonPrefab;
+
+    private void OnValidate()
+    {
+        amountNeeded = Mathf.Max(1, amountNeeded);
+    }
 }
