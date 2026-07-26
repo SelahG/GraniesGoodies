@@ -1,26 +1,38 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
-    private bool isPaused = false;
+    [SerializeField] private InputActionProperty pauseAction;
 
-    void Update()
+    private bool isPaused;
+
+    private void OnEnable()
     {
-        if (Input.GetKeyDown("q"))
-        {
-            if (isPaused)
-                Resume();
-            else
-                Pause();
-        }
+        pauseAction.action.Enable();
+        pauseAction.action.performed += TogglePause;
+    }
+
+    private void OnDisable()
+    {
+        pauseAction.action.performed -= TogglePause;
+        pauseAction.action.Disable();
+    }
+
+    private void TogglePause(InputAction.CallbackContext context)
+    {
+        if (isPaused)
+            Resume();
+        else
+            Pause();
     }
 
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         isPaused = false;
     }
 
@@ -33,6 +45,7 @@ public class PauseManager : MonoBehaviour
 
     public void QuitGame()
     {
+        Time.timeScale = 1f;
         Application.Quit();
         Debug.Log("EndGame");
     }
