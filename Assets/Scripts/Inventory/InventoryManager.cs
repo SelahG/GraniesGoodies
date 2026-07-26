@@ -7,7 +7,6 @@ public class InventoryManager : MonoBehaviour
 
     [Header("References")]
     public WagonSpawner wagonSpawner;
-    //public ChecklistUI checklistUI;
 
     private Dictionary<PlantType, int> inventory = new();
     private Dictionary<PlantType, int> required = new();
@@ -37,8 +36,6 @@ public class InventoryManager : MonoBehaviour
 
         wagonSpawner.SpawnPlant(plant.wagonPrefab);
 
-        //checklistUI.UpdateChecklist(inventory, required);
-
         CheckForCompletion();
 
         return true;
@@ -53,6 +50,5 @@ public class InventoryManager : MonoBehaviour
         }
 
         Debug.Log("Everything collected!");
-        // TODO Trigger Granny cutscene.
     }
 }
