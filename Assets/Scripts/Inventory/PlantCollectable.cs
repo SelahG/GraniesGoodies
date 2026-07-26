@@ -6,9 +6,6 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class PlantCollectable : MonoBehaviour
 {
-    [Header("Effects")]
-    public GameObject collectParticles;
-    public Transform particleSpawn;
 
     [Header("Input")]
     public InputActionReference depositButton;
@@ -68,13 +65,13 @@ public class PlantCollectable : MonoBehaviour
         if (!accepted)
             return;
 
-        if (collectParticles != null)
-        {
-            Instantiate(
-                collectParticles,
-                particleSpawn.position,
-                Quaternion.identity);
-        }
+        // if (collectParticles != null)
+        // {
+        //     Instantiate(
+        //         collectParticles,
+        //         particleSpawn.position,
+        //         Quaternion.identity);
+        // }
 
         Destroy(gameObject);
     }
