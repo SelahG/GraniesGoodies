@@ -13,6 +13,7 @@ public class FirstPersonMovement : MonoBehaviour
     public bool canRun = true;
     public bool IsRunning { get; private set; }
     public float runSpeed = 9f;
+    public Key crouchKey = Key.LeftCtrl;
     public Key runningKey = Key.LeftShift;
 
     /// <summary>
@@ -42,7 +43,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     private void ReadInput()
     {
-        if (Keyboard.current == null)
+        if (Keyboard.current != null && Keyboard.current[crouchKey].isPressed)
         {
             movementInput = Vector2.zero;
             runInput = false;
