@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6096094d69d82cc40947df806f66ab34, type: 3}
   m_Name: OpenXRCompositionLayersFeature Android
   m_EditorClassIdentifier: Unity.XR.OpenXR::UnityEngine.XR.OpenXR.Features.CompositionLayers.OpenXRCompositionLayersFeature
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Composition Layers Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.compositionlayers
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   - {fileID: 3431843514720607592}
   - {fileID: -3162629874173042569}
   - {fileID: -4148439521945771079}
-  - {fileID: 6321956715580666998}
+  - {fileID: 5840216561426795911}
   - {fileID: -1426067852455479505}
   - {fileID: -1791930663076785730}
   - {fileID: 1274548970859953982}
@@ -1567,7 +1567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f647cc0545697264a9878224faada6d5, type: 3}
   m_Name: MetaQuestFeature Android
   m_EditorClassIdentifier: Unity.XR.OpenXR.Features.MetaQuestSupport::UnityEngine.XR.OpenXR.Features.MetaQuestSupport.MetaQuestFeature
-  m_enabled: 0
+  m_enabled: 1
   nameUi: Meta Quest Support
   version: 1.0.0
   featureIdInternal: com.unity.openxr.feature.metaquest
@@ -1687,9 +1687,8 @@ MonoBehaviour:
   features:
   - {fileID: -4882450592427658217}
   - {fileID: -8009409346774181835}
-  - {fileID: -595051609204508238}
-  - {fileID: -338850566604129639}
   - {fileID: -6553427070475306678}
+  - {fileID: -338850566604129639}
   - {fileID: -5304986489393801998}
   - {fileID: 6464056248823723645}
   - {fileID: -1336368033390544893}
@@ -1699,6 +1698,7 @@ MonoBehaviour:
   - {fileID: 5767138266055504808}
   - {fileID: -4411333563746534292}
   - {fileID: 2215711722622608908}
+  - {fileID: -595051609204508238}
   - {fileID: -4788416103461312254}
   - {fileID: 4136405214206052017}
   - {fileID: 5966341479935441157}
