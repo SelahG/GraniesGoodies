@@ -30,11 +30,11 @@ public class PlantCollectable : MonoBehaviour
             depositButton.action.Enable();
     }
 
-    // void OnDisable()
-    // {
-    //     if (depositButton != null)
-    //         depositButton.action.Disable();
-    // }
+    void OnDisable()
+    {
+        if (depositButton != null)
+            depositButton.action.Disable();
+    }
 
     void Update()
     {
