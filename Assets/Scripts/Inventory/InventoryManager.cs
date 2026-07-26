@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("References")]
     public WagonSpawner wagonSpawner;
-    public ChecklistUI checklistUI;
+    //public ChecklistUI checklistUI;
 
     private Dictionary<PlantType, int> inventory = new();
     private Dictionary<PlantType, int> required = new();
@@ -37,7 +37,7 @@ public class InventoryManager : MonoBehaviour
 
         wagonSpawner.SpawnPlant(plant.wagonPrefab);
 
-        checklistUI.UpdateChecklist(inventory, required);
+        //checklistUI.UpdateChecklist(inventory, required);
 
         CheckForCompletion();
 
