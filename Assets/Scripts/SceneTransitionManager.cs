@@ -1,54 +1,112 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneTransitionManager : MonoBehaviour
 {
-    public FadeScreen fadeScreen;
     public static SceneTransitionManager singleton;
+
+    private bool isLoading;
 
     private void Awake()
     {
-        if (singleton && singleton != this)
-            Destroy(singleton);
+        if (singleton != null && singleton != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         singleton = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void GoToScene(int sceneIndex)
     {
-        StartCoroutine(GoToSceneRoutine(sceneIndex));
-    }
-
-    IEnumerator GoToSceneRoutine(int sceneIndex)
-    {
-        fadeScreen.FadeOut();
-        yield return new WaitForSeconds(fadeScreen.fadeDuration);
-
-        //Launch the new scene
-        SceneManager.LoadScene(sceneIndex);
+        GoToSceneAsync(sceneIndex);
     }
 
     public void GoToSceneAsync(int sceneIndex)
     {
-        StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
+        if (isLoading)
+        {
+            return;
+        }
+
+        if (sceneIndex < 0 ||
+            sceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.LogError(
+                $"Scene index {sceneIndex} is not included in Build Settings."
+            );
+
+            return;
+        }
+
+        StartCoroutine(LoadSceneRoutine(sceneIndex));
     }
 
-    IEnumerator GoToSceneAsyncRoutine(int sceneIndex)
+    public void GoToScene(string sceneName)
     {
-        fadeScreen.FadeOut();
-        //Launch the new scene
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-        operation.allowSceneActivation = false;
-
-        float timer = 0;
-        while(timer <= fadeScreen.fadeDuration && !operation.isDone)
+        if (isLoading)
         {
-            timer += Time.deltaTime;
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(sceneName))
+        {
+            Debug.LogError("Cannot load a scene with an empty name.");
+            return;
+        }
+
+        StartCoroutine(LoadSceneRoutine(sceneName));
+    }
+
+    private IEnumerator LoadSceneRoutine(int sceneIndex)
+    {
+        isLoading = true;
+
+        // Ensure scene loading works when called from the pause menu.
+        Time.timeScale = 1f;
+
+        AsyncOperation operation =
+            SceneManager.LoadSceneAsync(sceneIndex);
+
+        if (operation == null)
+        {
+            Debug.LogError($"Could not load scene index {sceneIndex}.");
+            isLoading = false;
+            yield break;
+        }
+
+        while (!operation.isDone)
+        {
             yield return null;
         }
 
-        operation.allowSceneActivation = true;
+        isLoading = false;
+    }
+
+    private IEnumerator LoadSceneRoutine(string sceneName)
+    {
+        isLoading = true;
+
+        Time.timeScale = 1f;
+
+        AsyncOperation operation =
+            SceneManager.LoadSceneAsync(sceneName);
+
+        if (operation == null)
+        {
+            Debug.LogError($"Could not load scene \"{sceneName}\".");
+            isLoading = false;
+            yield break;
+        }
+
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
+
+        isLoading = false;
     }
 }
